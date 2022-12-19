@@ -1,0 +1,30 @@
+.header {
+    background: linear-gradient(to right, rgb(107, 107, 248), rgb(30, 30, 185));
+    padding: 10px; 
+}
+
+h1 {
+    text-align: center;
+    color: white;
+}
+
+/* aside {
+    padding: 10px;
+} */
+
+.button {
+    margin-top: 15px;
+}
+
+.large-container {
+    width: 1000px;
+    border: 2px solid rgb(0, 0, 0);
+    padding: 100px;
+}
+
+.small-container {
+    width: 175px;
+    height: 225px;
+    border: 2px solid rgb(0, 0, 0);
+    margin: 15px;
+}
