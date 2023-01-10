@@ -1,5 +1,5 @@
 var button = document.querySelector('#add');
-var temp = document.getElementById('#temp');
+var temp = document.querySelector('#temp');
 var wind = document.querySelector('#wind');
 var humidity = document.querySelector('#humidity');
 // var symbol = document.querySelector('#symbol');
@@ -21,19 +21,20 @@ button.addEventListener('click', function() {
             // api.openweathermap.org/data/2.5/forecast?q=+city&appid={API key}
             .then(res => res.json())
             .then(data => {
-                for (var i = 0; i < data.length; i++) {
-                    var mainTemp = document.createElement('h4');
-                        mainTemp.textContent = data.list[0].main.temp;
-                        // humidity.textContent = data.list[0].main.humidity;
-                        // wind.textContent = data.list[0].wind.speed;
-                            temp.append(mainTemp);
-                            // humidity.append(humidity);
-                            // wind.append(wind);
-                               
-                                console.log(data)
-                                console.log(data.list[0].main.temp)
-                                console.log(data.list[0].main.humidity)
-                                console.log(data.list[0].wind.speed)
+                console.log(data)
+                    for (var i = 0; i < data.length; i++) {
+                        var mainTemp = document.createElement('p');
+                            temp.textContent = data.list[0].main.temp;
+                            // humidity.textContent = data.list[0].main.humidity;
+                            // wind.textContent = data.list[0].wind.speed;
+                                temp.append(mainTemp);
+                                // humidity.append(humidity);
+                                // wind.append(wind);
+                                
+                                    console.log(data)
+                                    // console.log(data.list[0].main.temp)
+                                    // console.log(data.list[0].main.humidity)
+                                    // console.log(data.list[0].wind.speed)
                     }
 
     
@@ -41,6 +42,6 @@ button.addEventListener('click', function() {
             
             // .catch(err => alert('You entered Wrong city name'))
         })
- 
+        
 
     button.addEventListener('submit', getWeather);
