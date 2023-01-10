@@ -20,24 +20,22 @@ button.addEventListener('click', function() {
             fetch('https://api.openweathermap.org/data/2.5/forecast?q='+city+'&appid=f0d952a79869cf37ed59a5dec2aa36e9&units=imperial')
             // api.openweathermap.org/data/2.5/forecast?q=+city&appid={API key}
             .then(res => res.json())
-            .then(data => {
+                .then(data => {
                 console.log(data)
-                    for (var i = 0; i < data.length; i++) {
-                        var mainTemp = document.createElement('p');
-                            temp.textContent = data.list[0].main.temp;
-                            // humidity.textContent = data.list[0].main.humidity;
-                            // wind.textContent = data.list[0].wind.speed;
-                                temp.append(mainTemp);
-                                // humidity.append(humidity);
-                                // wind.append(wind);
-                                
-                                    console.log(data)
-                                    // console.log(data.list[0].main.temp)
-                                    // console.log(data.list[0].main.humidity)
-                                    // console.log(data.list[0].wind.speed)
+                    var html =""
+                    for (var i = 0; i < data.list.length; i=i+8) {
+                        html += `<div class="card" style="width: 18rem;">
+ 
+                    <div class="card-body">
+                        <h5 class="card-title">${city}</h5>
+                        <p class="card-text">Temp: 4{data.list[i].main.temp} <img src="https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}@2x.png" class="card-img-top" alt="..."></p>
+                        <p class="card-text">Humidity: ${data.list[0].main.humidity}</p>
+                    <p class="card-text">Wind speed: ${data.list[i].wind.speed}</p>
+                    </div>
+                    </div>`
                     }
 
-    
+    document.querySelector("#forecast").innerHTML = html
             })
             
             // .catch(err => alert('You entered Wrong city name'))
