@@ -24,16 +24,16 @@ button.addEventListener('click', function() {
                 console.log(data)
                     var html =""
                     for (var i = 0; i < data.list.length; i=i+8) {
-                        html += `<div class="card" style="width: 18rem;">
+                        html += `<div class="card" style="width: 12rem;">
  
                     <div class="card-body">
                         <h5 class="card-title">${city}</h5>
-                        <p class="card-text">Temp: 4{data.list[i].main.temp} <img src="https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}@2x.png" class="card-img-top" alt="..."></p>
-                        <p class="card-text">Humidity: ${data.list[0].main.humidity}</p>
+                        <p class="card-text">Temp: ${data.list[i].main.temp} <img src="https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}@2x.png" class="card-img-top" alt="..."></p>
+                        <p class="card-text">Humidity: ${data.list[i].main.humidity}</p>
                     <p class="card-text">Wind speed: ${data.list[i].wind.speed}</p>
                     </div>
                     </div>`
-                    }
+                    } 
 
     document.querySelector("#forecast").innerHTML = html
             })
