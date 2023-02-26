@@ -27,8 +27,7 @@ button.addEventListener('click', function() {
                         html += `<div class="card" style="width: 12rem;">
  
                     <div class="card-body">
-                        <h5 class="card-title">${city}</h5>
-                        <p class="card-text">Temp: ${data.list[i].main.temp} <img src="https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}@2x.png" class="card-img-top" alt="..."></p>
+                        <p class="card-text">Temp: ${data.list[i].main.temp} <img src="https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}@2x.png" class="card-img-top" alt="... "style="max-width:50%;"></p>
                         <p class="card-text">Humidity: ${data.list[i].main.humidity}</p>
                     <p class="card-text">Wind speed: ${data.list[i].wind.speed}</p>
                     </div>
