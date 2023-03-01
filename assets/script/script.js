@@ -2,9 +2,9 @@ var button = document.querySelector('#add');
 var temp = document.querySelector('#temp');
 var wind = document.querySelector('#wind');
 var humidity = document.querySelector('#humidity');
-// var symbol = document.querySelector('#symbol');
 var city = document.querySelector('#city').value;
 var descrip = document.querySelector('#descrip');
+
 
 
 var getWeather = function (repo) {
@@ -12,7 +12,39 @@ var getWeather = function (repo) {
     var apiGeo = 'http://api.openweathermap.org/geo/1.0/direct?q={san diego}&appid=f0d952a79869cf37ed59a5dec2aa36e9'
 }
 
-// console.log(city);
+function savedCities () {
+    localStorage.setItem('City', 'data')
+    console.log(localStorage)
+}
+
+savedCities()
+
+function currentWeather() {
+    var city = document.querySelector('#city').value;
+        console.log(city)
+            fetch('https://api.openweathermap.org/data/2.5/forecast?q='+city+'&appid=f0d952a79869cf37ed59a5dec2aa36e9&units=imperial')
+            // api.openweathermap.org/data/2.5/forecast?q=+city&appid={API key}
+            .then(res => res.json())
+                .then(data => {
+                console.log(data)
+                    var html =""
+                    {
+                        html += `<div class="card" style="width: 60rem;">
+ 
+                    <div class="card-body">
+                        <p class="card-text">${data.city.name} ${data.list[0].dt_txt} <img src="https://openweathermap.org/img/wn/${data.list[0].weather[0].icon}@2x.png" class="card-img-top" alt="... "style="max-width:10%;"></p>
+                        <p class="card-text">Temp: ${data.list[0].main.temp}</p>
+                        <p class="card-text">Humidity: ${data.list[0].main.humidity}</p>
+                        <p class="card-text">Wind speed: ${data.list[0].wind.speed}</p>
+                    </div>
+                    </div>`
+                    } 
+
+    document.querySelector("#currentforecast").innerHTML = html
+            })
+            // .catch(err => alert('You entered Wrong city name'))
+        }
+
 
 button.addEventListener('click', function() {
     var city = document.querySelector('#city').value;
@@ -22,21 +54,22 @@ button.addEventListener('click', function() {
             .then(res => res.json())
                 .then(data => {
                 console.log(data)
+                currentWeather()
                     var html =""
-                    for (var i = 0; i < data.list.length; i=i+8) {
-                        html += `<div class="card" style="width: 12rem;">
+                    for (var i = 1; i < data.list.length; i=i+8) {
+                        html += `<div class="card" style="width: 10rem;">
  
                     <div class="card-body">
-                        <p class="card-text">Temp: ${data.list[i].main.temp} <img src="https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}@2x.png" class="card-img-top" alt="... "style="max-width:50%;"></p>
+                        <p class="card-text"><img src="https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}@2x.png" class="card-img-top" alt="... "style="max-width:50%;"></p>
+                        <p class="card-text">Temp: ${data.list[i].main.temp}</p>
                         <p class="card-text">Humidity: ${data.list[i].main.humidity}</p>
-                    <p class="card-text">Wind speed: ${data.list[i].wind.speed}</p>
+                        <p class="card-text">Wind speed: ${data.list[i].wind.speed}</p>
                     </div>
                     </div>`
                     } 
 
     document.querySelector("#forecast").innerHTML = html
             })
-            
             // .catch(err => alert('You entered Wrong city name'))
         })
         
