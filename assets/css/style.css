@@ -8,24 +8,26 @@ h1 {
     color: white;
 }
 
-/* aside {
-    padding: 10px;
-} */
 
 .button {
     margin-top: 15px;
 }
 
-.large-container {
-    width: 1000px;
-    border: 2px solid rgb(0, 0, 0);
-    padding: 100px;
+.card {
+    margin-left: 20px;
+    background-color: rgb(43, 43, 75);
+    color: rgb(255, 255, 255);
 }
 
-.small-container {
-    width: 175px;
-    height: 225px;
-    border: 2px solid rgb(0, 0, 0);
-    margin: 15px;
-}
-
+.saved-city-button {
+    background-color: #636663;
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    margin: 6px 2px;
+    width: 83%;
+  }
